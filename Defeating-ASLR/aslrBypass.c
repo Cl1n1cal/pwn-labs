@@ -2,23 +2,27 @@
 
 //gcc -fno-stack-protector -no-pie aslrBypass.c -o aslrBypass
 
+void never_called()
+{
+	puts("I am never called");
+	asm(
+		"popq %rdx;"
+		"popq %rsi;"
+		"popq %rdi;"
+	   );
+}
+
+
+
 int main()
 {
-	printf("Welcome to Clinical's pwn labs.\n");
-	printf("This challenge is called 'ASLR Bypass'.\n");
-	printf("Please enter some data:\n");
+	puts("");
+	puts("Welcome to Clinical's pwn labs.");
+	puts("This challenge is called 'ASLR Bypass'.");
+	puts("Please enter some data:");
 
 	char buffer[0x20];
 	gets(buffer);
-
-
-
-
-
-
-
-
-
 
 	return 0;
 }
